@@ -66,7 +66,7 @@ All the scripts here are generic ones. Need to update the script based on organi
 
     • Once all the pre-requisites and above modifications are completed, copy all the scripts to Linux Server under the path specified path.
     • Create a cron job by running the command “crontab -e” and add below line. This will start the script and make sure script will be always running.
-    • * * * * * ps -elf | grep  check_approval_request.sh | grep -v “grep” ; [$?-ne 0] && nohup /FULL/PATH/TO/check_approval_request.sh &
+    • * * * * * ps -elf | grep  check_approval_request.sh | grep -v “grep” ; [ $? -ne 0 ] && nohup /FULL/PATH/TO/check_approval_request.sh &
     • The script will create logs and for auditing purpose, store the logs based on organization requirement. Enable log rotation by running the command as root “vi /etc/logrotate.d/auto_approve” and add below entries after replacing with the correct path of logs. This will rotate logs monthly and will have 6 months data.
 
 /FULL/PATH/TO/logs/approval_request.log {
